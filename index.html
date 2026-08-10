@@ -23,7 +23,6 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            transition: background 1s ease;
         }
         /* Затемнение фона */
         body::before {
@@ -35,66 +34,7 @@
             height: 100%;
             background: rgba(10, 10, 20, 0.75);
             z-index: -1;
-            transition: background 1s ease;
         }
-
-        /* --- СЕЗОННЫЕ СТИЛИ --- */
-        /* ВЕСНА */
-        body.season-spring {
-            background-image: url('https://via.placeholder.com/1920x1080/2d4a3b/6a9c78?text=Весна+в+Бомжбурге');
-        }
-        body.season-spring::before {
-            background: rgba(45, 74, 59, 0.7);
-        }
-        body.season-spring .season-badge {
-            background: rgba(76, 175, 80, 0.2);
-            border-color: #4caf50;
-            color: #81c784;
-        }
-        body.season-spring .season-title { color: #81c784; }
-
-        /* ЛЕТО */
-        body.season-summer {
-            background-image: url('https://via.placeholder.com/1920x1080/3a5a7a/ffd700?text=Лето+в+Бомжбурге');
-        }
-        body.season-summer::before {
-            background: rgba(58, 90, 122, 0.7);
-        }
-        body.season-summer .season-badge {
-            background: rgba(255, 215, 0, 0.2);
-            border-color: #ffd700;
-            color: #ffd700;
-        }
-        body.season-summer .season-title { color: #ffd700; }
-
-        /* ОСЕНЬ */
-        body.season-autumn {
-            background-image: url('https://via.placeholder.com/1920x1080/5a3a2a/f4a261?text=Осень+в+Бомжбурге');
-        }
-        body.season-autumn::before {
-            background: rgba(90, 58, 42, 0.75);
-        }
-        body.season-autumn .season-badge {
-            background: rgba(244, 162, 97, 0.2);
-            border-color: #f4a261;
-            color: #f4a261;
-        }
-        body.season-autumn .season-title { color: #f4a261; }
-
-        /* ЗИМА */
-        body.season-winter {
-            background-image: url('https://via.placeholder.com/1920x1080/2a3a5a/7ec8e3?text=Зима+в+Бомжбурге');
-        }
-        body.season-winter::before {
-            background: rgba(42, 58, 90, 0.8);
-        }
-        body.season-winter .season-badge {
-            background: rgba(126, 200, 227, 0.2);
-            border-color: #7ec8e3;
-            color: #7ec8e3;
-        }
-        body.season-winter .season-title { color: #7ec8e3; }
-
         .wrapper {
             max-width: 1200px;
             width: 100%;
@@ -148,72 +88,7 @@
             border-color: #e76f51;
         }
 
-        /* СЕЗОННЫЙ БЕЙДЖ В ШАПКЕ */
-        .season-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            border-radius: 40px;
-            border: 2px solid;
-            font-weight: bold;
-            font-size: 0.9rem;
-            backdrop-filter: blur(4px);
-            transition: all 0.5s ease;
-            cursor: default;
-        }
-        .season-badge .badge-icon {
-            font-size: 1.1rem;
-        }
-
-        /* КНОПКИ ВЫБОРА СЕЗОНА */
-        .season-selector {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 10px 0 5px;
-        }
-        .season-btn {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
-            color: #aaa;
-            padding: 6px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-        }
-        .season-btn:hover {
-            transform: scale(1.05);
-        }
-        .season-btn.active-spring {
-            background: rgba(76, 175, 80, 0.3);
-            border-color: #4caf50;
-            color: #81c784;
-        }
-        .season-btn.active-summer {
-            background: rgba(255, 215, 0, 0.3);
-            border-color: #ffd700;
-            color: #ffd700;
-        }
-        .season-btn.active-autumn {
-            background: rgba(244, 162, 97, 0.3);
-            border-color: #f4a261;
-            color: #f4a261;
-        }
-        .season-btn.active-winter {
-            background: rgba(126, 200, 227, 0.3);
-            border-color: #7ec8e3;
-            color: #7ec8e3;
-        }
-        .season-btn.active-auto {
-            background: rgba(255,255,255,0.1);
-            border-color: #888;
-            color: #aaa;
-        }
-
-        /* --- СТАТИСТИКА В ШАПКЕ --- */
+        /* СТАТИСТИКА В ШАПКЕ */
         .header-stats {
             display: flex;
             align-items: center;
@@ -235,16 +110,6 @@
             box-shadow: 0 0 12px #4caf50;
             animation: pulse-dot 2s infinite;
         }
-        .online-dot.offline {
-            background: #f44336;
-            box-shadow: 0 0 12px #f44336;
-            animation: none;
-        }
-        .online-dot.error {
-            background: #ff9800;
-            box-shadow: 0 0 12px #ff9800;
-            animation: none;
-        }
         @keyframes pulse-dot {
             0% { opacity: 0.6; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.2); }
@@ -265,11 +130,6 @@
             font-size: 0.8rem;
             letter-spacing: 0.5px;
             border: 1px solid #333;
-        }
-        .status-text {
-            font-size: 0.8rem;
-            opacity: 0.5;
-            margin-left: 4px;
         }
 
         /* --- СТРАНИЦЫ --- */
@@ -478,12 +338,10 @@
             .ip { font-size: 1.6rem; }
             .donate-grid { grid-template-columns: 1fr 1fr; }
             .header-stats { width: 100%; justify-content: center; }
-            .season-selector { justify-content: center; }
         }
         @media (max-width: 480px) {
             .donate-grid { grid-template-columns: 1fr; }
             .header-stats { flex-wrap: wrap; }
-            .season-btn { font-size: 0.75rem; padding: 4px 12px; }
         }
     </style>
 </head>
@@ -501,19 +359,11 @@
             <!-- Блок статистики справа -->
             <div class="header-stats">
                 <span>
-                    <span class="online-dot" id="online-dot"></span>
-                    <span class="online-count" id="online-count">⏳</span>
+                    <span class="online-dot"></span>
+                    <span class="online-count" id="online-count">0</span>
                     <span class="online-label">онлайн</span>
-                    <span class="status-text" id="status-text"></span>
                 </span>
-                <span class="ip-small">37.230.228.60:25667</span>
-            </div>
-
-            <!-- СЕЗОННЫЙ БЕЙДЖ -->
-            <div class="season-badge" id="seasonBadge">
-                <span class="badge-icon" id="seasonIcon">🌸</span>
-                <span id="seasonName">Весна</span>
-                <span style="opacity:0.5; font-weight:normal;">в Бомжбурге</span>
+                <span class="ip-small">unchartedland.go-mc.xyz</span>
             </div>
 
             <nav class="nav">
@@ -527,18 +377,6 @@
 
         <!-- ГЛАВНАЯ -->
         <div id="page-home" class="page active">
-            <!-- ВЫБОР СЕЗОНА -->
-            <div style="background: rgba(20,20,40,0.6); border-radius: 16px; padding: 15px 20px; margin: 5px 0 15px; text-align: center; border: 1px solid rgba(255,255,255,0.06);">
-                <p style="opacity: 0.5; font-size: 0.8rem; margin-bottom: 8px;">🎨 Выбери настроение Бомжбурга:</p>
-                <div class="season-selector">
-                    <button class="season-btn" data-season="spring" onclick="forceSeason('spring')">🌸 Весна</button>
-                    <button class="season-btn" data-season="summer" onclick="forceSeason('summer')">☀️ Лето</button>
-                    <button class="season-btn" data-season="autumn" onclick="forceSeason('autumn')">🍂 Осень</button>
-                    <button class="season-btn" data-season="winter" onclick="forceSeason('winter')">❄️ Зима</button>
-                    <button class="season-btn" data-season="auto" onclick="forceSeason('auto')">🔄 Авто</button>
-                </div>
-            </div>
-
             <div class="card">
                 <h2>Добро пожаловать</h2>
                 <p>Uncharted Land — уникальный сервер с атмосферой выживания, ролевой игрой,своей экономикой и механиками, которых нет больше ни у кого.</p>
@@ -555,15 +393,15 @@
         <!-- О СЕРВЕРЕ -->
         <div id="page-about" class="page">
             <div class="card">
-                <h2>🔍О проекте</h2>
+                <h2>О проекте:</h2>
                 <p><strong>Uncharted Land</strong> — это сервер, где ты начинаешь свое уникальное выживание с нуля.Твоя главная цель-стать самым богатым и узнаваемым</p>
                 <p><strong>Бомжбург:</strong>
-                <p>🔸 Сбор бутылок, макулатуры, незаконная торговля у барыги<br>
-                🔸 Квесты, уровни, зоны доступа через RP-уровень<br>
-                🔸 Канализация, крысы, стаи псов<br>
-                🔸 Покупка недвижимости<br>
-                🔸 Огнестрельное оружие (Tec-9) и лицензии<br>
-                🔸 Экономика, голод, жажда, стамина</p>
+                <p>🔹 Сбор бутылок, макулатуры, незаконная торговля у барыги<br>
+                🔹 Квесты, уровни, зоны доступа через RP-уровень<br>
+                🔹 Канализация, крысы, стаи псов<br>
+                🔹 Покупка недвижимости<br>
+                🔹 Огнестрельное оружие (Tec-9) и лицензии<br>
+                🔹 Экономика, голод, жажда, стамина</p>
                 <br>
                 <p>Каждый игрок строит свою историю. Присоединяйся!</p>
             </div>
@@ -640,7 +478,7 @@
 
                     <label>Выберите привилегию</label>
                     <select id="privilege-select">
-                        <option value="Стандарт">Стандарт</option>
+                        <option value="Стандарь">Стандарт</option>
                         <option value="Престиж">Престиж</option>
                         <option value="Платинум">Платинум</option>
                         <option value="Элита">Элита</option>
@@ -705,74 +543,6 @@
     </div>
 
     <script>
-        const SERVER_IP = '37.230.228.60';
-        const SERVER_PORT = 25667;
-
-        // ========== СЕЗОННОЕ ОФОРМЛЕНИЕ ==========
-
-        // Определение сезона по дате
-        function getSeason() {
-            const month = new Date().getMonth();
-            if (month >= 2 && month <= 4) return 'spring';
-            if (month >= 5 && month <= 7) return 'summer';
-            if (month >= 8 && month <= 10) return 'autumn';
-            return 'winter';
-        }
-
-        // Данные для каждого сезона
-        const seasonData = {
-            spring: { name: 'Весна', icon: '🌸' },
-            summer: { name: 'Лето', icon: '☀️' },
-            autumn: { name: 'Осень', icon: '🍂' },
-            winter: { name: 'Зима', icon: '❄️' }
-        };
-
-        // Принудительный выбор сезона
-        function forceSeason(season) {
-            if (season === 'auto') {
-                localStorage.removeItem('forcedSeason');
-                applySeason();
-                updateSeasonButtons('auto');
-                return;
-            }
-            localStorage.setItem('forcedSeason', season);
-            applySeason();
-            updateSeasonButtons(season);
-        }
-
-        // Подсветка активной кнопки
-        function updateSeasonButtons(activeSeason) {
-            const season = activeSeason === 'auto' ? getSeason() : activeSeason;
-            document.querySelectorAll('.season-btn').forEach(btn => {
-                btn.className = 'season-btn';
-                if (btn.dataset.season === activeSeason) {
-                    btn.classList.add('active-' + (activeSeason === 'auto' ? 'auto' : season));
-                }
-            });
-        }
-
-        // Применение сезона
-        function applySeason() {
-            const forced = localStorage.getItem('forcedSeason');
-            const season = forced || getSeason();
-            const data = seasonData[season];
-
-            // Меняем класс на body
-            document.body.className = 'season-' + season;
-
-            // Обновляем бейдж
-            document.getElementById('seasonIcon').textContent = data.icon;
-            document.getElementById('seasonName').textContent = data.name;
-
-            // Подсвечиваем кнопки
-            updateSeasonButtons(forced || 'auto');
-        }
-
-        // Применяем при загрузке
-        applySeason();
-
-        // ========== НАВИГАЦИЯ ==========
-
         // Переключение вкладок
         document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -820,45 +590,17 @@
             alert(`Вы выбрали:\nНик: ${nick}\nСервер: ${server}\nПривилегия: ${priv}\n\nСейчас вы будете перенаправлены на PayPal для оплаты.`);
         }
 
-        // ----- РЕАЛЬНЫЙ ОНЛАЙН ЧЕРЕЗ API -----
-        async function fetchOnline() {
-            const dot = document.getElementById('online-dot');
+        // ----- СИМУЛЯЦИЯ ОНЛАЙНА -----
+        function updateOnline() {
             const countEl = document.getElementById('online-count');
-            const statusText = document.getElementById('status-text');
-
-            try {
-                const response = await fetch(
-                    `https://api.mcsrvstat.us/3/${SERVER_IP}:${SERVER_PORT}`,
-                    { signal: AbortSignal.timeout(8000) }
-                );
-
-                if (!response.ok) throw new Error('API error');
-
-                const data = await response.json();
-
-                if (data.online) {
-                    const players = data.players?.online || 0;
-                    countEl.textContent = players;
-                    dot.className = 'online-dot';
-                    statusText.textContent = '';
-                } else {
-                    countEl.textContent = '0';
-                    dot.className = 'online-dot offline';
-                    statusText.textContent = '⚡ офлайн';
-                }
-            } catch (error) {
-                console.warn('Ошибка получения онлайна:', error);
-                countEl.textContent = '❓';
-                dot.className = 'online-dot error';
-                statusText.textContent = '⚠️ ошибка';
-            }
+            // Генерируем случайное число от 7 до 42
+            const randomOnline = Math.floor(Math.random() * 36) + 7;
+            countEl.textContent = randomOnline;
         }
-
-        // Первый запрос при загрузке
-        fetchOnline();
-
-        // Обновляем каждые 30 секунд
-        setInterval(fetchOnline, 30000);
+        // Первое обновление при загрузке
+        updateOnline();
+        // Обновляем каждые 10 секунд
+        setInterval(updateOnline, 10000);
     </script>
 </body>
 </html>

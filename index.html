@@ -421,12 +421,12 @@
                 <h2>О проекте:</h2>
                 <p><strong>Uncharted Land</strong> — это сервер, где ты начинаешь свое уникальное выживание с нуля.Твоя главная цель-стать самым богатым и узнаваемым</p>
                 <p><strong>Бомжбург:</strong>
-                <p>🔹 Сбор бутылок, макулатуры, незаконная торговля у барыги<br>
-                🔹 Квесты, уровни, зоны доступа через RP-уровень<br>
-                🔹 Канализация, крысы, стаи псов<br>
-                🔹 Покупка недвижимости<br>
-                🔹 Огнестрельное оружие (Tec-9) и лицензии<br>
-                🔹 Экономика, голод, жажда, стамина</p>
+                <p>🔸 Сбор бутылок, макулатуры, незаконная торговля у барыги<br>
+                🔸 Квесты, уровни, зоны доступа через RP-уровень<br>
+                🔸 Канализация, крысы, стаи псов<br>
+                🔸 Покупка недвижимости<br>
+                🔸 Огнестрельное оружие (Tec-9) и лицензии<br>
+                🔸 Экономика, голод, жажда, стамина</p>
                 <br>
                 <p>Каждый игрок строит свою историю. Присоединяйся!</p>
             </div>
@@ -556,7 +556,7 @@
                     <a href="https://www.tiktok.com/@bomjburg3?_r=1&_t=ZP-98lsf1DbNfC" target="_blank">🎬 TikTok</a>
                 </div>
                 <br>
-                <p>📧 По вопросам: <strong>support@unchartedland.ru</strong></p>
+                <p>📧 По вопросам: <strong>bomjburg@gmail.com</strong></p>
             </div>
         </div>
 
@@ -630,10 +630,15 @@
 
             try {
                 // Используем публичное API для проверки статуса Minecraft сервера
-                const response = await fetch(`https://api.mcsrvstat.us/3/${ip}:${port}`);
+                // Добавляем User-Agent для корректной работы API
+                const response = await fetch(`https://api.mcsrvstat.us/3/${ip}:${port}`, {
+                    headers: {
+                        'User-Agent': 'UnchartedLand-Website/1.0 (support@unchartedland.ru)'
+                    }
+                });
                 
                 if (!response.ok) {
-                    throw new Error('Ошибка запроса');
+                    throw new Error(`Ошибка HTTP: ${response.status}`);
                 }
 
                 const data = await response.json();

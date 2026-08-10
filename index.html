@@ -49,6 +49,9 @@
             padding: 15px 0 25px;
             border-bottom: 2px solid rgba(231, 111, 81, 0.3);
         }
+        .logo {
+            cursor: pointer;
+        }
         .logo h1 {
             font-size: 2.6rem;
             font-weight: 800;
@@ -83,6 +86,50 @@
         .nav a.active {
             color: #e76f51;
             border-color: #e76f51;
+        }
+
+        /* СТАТИСТИКА В ШАПКЕ */
+        .header-stats {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(20, 20, 40, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: 1px solid #2a2a4a;
+            font-size: 0.95rem;
+        }
+        .online-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #4caf50;
+            border-radius: 50%;
+            margin-right: 6px;
+            box-shadow: 0 0 12px #4caf50;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.6; transform: scale(1); }
+        }
+        .online-count {
+            font-weight: bold;
+            color: #fff;
+        }
+        .online-label {
+            opacity: 0.6;
+        }
+        .header-stats .ip-small {
+            color: #aaa;
+            background: #1a1a38;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            border: 1px solid #333;
         }
 
         /* --- СТРАНИЦЫ --- */
@@ -230,26 +277,6 @@
             transform: scale(1.02);
         }
 
-        /* --- ЛАУНЧЕР --- */
-        .launcher-btn {
-            display: inline-block;
-            background: #e76f51;
-            color: #0b0b1a;
-            padding: 14px 40px;
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: 0.3s;
-            margin: 10px 0;
-            border: none;
-            cursor: pointer;
-        }
-        .launcher-btn:hover {
-            background: #d45d3e;
-            transform: scale(1.03);
-        }
-
         /* --- НОВОСТИ --- */
         .news-item {
             background: rgba(26, 26, 56, 0.8);
@@ -310,9 +337,11 @@
             .nav { gap: 15px; }
             .ip { font-size: 1.6rem; }
             .donate-grid { grid-template-columns: 1fr 1fr; }
+            .header-stats { width: 100%; justify-content: center; }
         }
         @media (max-width: 480px) {
             .donate-grid { grid-template-columns: 1fr; }
+            .header-stats { flex-wrap: wrap; }
         }
     </style>
 </head>
@@ -322,10 +351,21 @@
 
         <!-- ШАПКА -->
         <header class="header">
-            <div class="logo">
+            <div class="logo" onclick="goHome()">
                 <h1>Uncharted Land</h1>
                 <span>Выживание · РП · Бомжбург</span>
             </div>
+
+            <!-- Блок статистики справа -->
+            <div class="header-stats">
+                <span>
+                    <span class="online-dot"></span>
+                    <span class="online-count" id="online-count">0</span>
+                    <span class="online-label">онлайн</span>
+                </span>
+                <span class="ip-small">unchartedland.go-mc.xyz</span>
+            </div>
+
             <nav class="nav">
                 <a class="active" data-page="home">Главная</a>
                 <a data-page="about">О сервере</a>
@@ -338,8 +378,8 @@
         <!-- ГЛАВНАЯ -->
         <div id="page-home" class="page active">
             <div class="card">
-                <h2>🔥 Добро пожаловать</h2>
-                <p>Uncharted Land — уникальный сервер с атмосферой выживания, ролевой игрой и механиками, которых нет больше нигде. Стань бомжом, выживай, строй, торгуй, сражайся.</p>
+                <h2>Добро пожаловать</h2>
+                <p>Uncharted Land — уникальный сервер с атмосферой выживания, ролевой игрой,своей экономикой и механиками, которых нет больше ни у кого.</p>
             </div>
             <div class="ip-box">
                 <div class="ip" id="server-ip">unchartedland.go-mc.xyz</div>
@@ -348,25 +388,20 @@
             <div style="text-align: center; margin: 10px 0 30px;">
                 <span style="background: #e76f51; color: #0b0b1a; padding: 10px 25px; border-radius: 40px; font-weight: bold;">▶ Версия 1.20.1 · OptiFine / CIT Resewn</span>
             </div>
-            <!-- Лаунчер -->
-            <div style="text-align: center;">
-                <a href="#" class="launcher-btn" download>📥 Скачать лаунчер</a>
-                <p style="margin-top: 8px; opacity:0.6; font-size:0.9rem;">Не обязателен, но упрощает игру</p>
-            </div>
         </div>
 
         <!-- О СЕРВЕРЕ -->
         <div id="page-about" class="page">
             <div class="card">
-                <h2>🌍 О проекте</h2>
-                <p><strong>Uncharted Land</strong> — это сервер, где ты начинаешь с нуля. Без дома, денег и привилегий. Твой путь — от бомжа до легенды.</p>
-                <br>
-                <p>🔹 Сбор бутылок, макулатуры, торговля у барыги<br>
-                🔹 Квесты, уровни, зоны доступа<br>
+                <h2>О проекте:</h2>
+                <p><strong>Uncharted Land</strong> — это сервер, где ты начинаешь свое уникальное выживание с нуля.Твоя главная цель-стать самым богатым и узнаваемым</p>
+                <p><strong>Бомжбург:</strong>
+                <p>🔹 Сбор бутылок, макулатуры, незаконная торговля у барыги<br>
+                🔹 Квесты, уровни, зоны доступа через RP-уровень<br>
                 🔹 Канализация, крысы, стаи псов<br>
-                🔹 Покупка квартир и гаражей<br>
+                🔹 Покупка недвижимости<br>
                 🔹 Огнестрельное оружие (Tec-9) и лицензии<br>
-                🔹 Кастомная экономика, голод, жажда, стамина</p>
+                🔹 Экономика, голод, жажда, стамина</p>
                 <br>
                 <p>Каждый игрок строит свою историю. Присоединяйся!</p>
             </div>
@@ -375,57 +410,57 @@
         <!-- ДОНАТ -->
         <div id="page-donate" class="page">
             <div class="card">
-                <h2>🎁 Донат услуги</h2>
-                <p>Поддержи сервер и получи привилегии, которые сделают игру комфортнее.</p>
+                <h2>Донат услуги</h2>
+                <p>У нас есть привилегии и услуги, которые сделают игру комфортнее.</p>
 
                 <div class="donate-grid">
                     <div class="donate-item">
-                        <div class="name">🗡️ Standard</div>
+                        <div class="name">🗡️ Стандарт</div>
                         <div class="price">От 19 ₽</div>
                         <div class="desc">Базовые привилегии</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">👑 Prestige</div>
+                        <div class="name">🎩 Престиж</div>
                         <div class="price">От 35 ₽</div>
                         <div class="desc">Улучшенный набор</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">⭐ Platinum</div>
+                        <div class="name">⭐ Платинум</div>
                         <div class="price">От 59 ₽</div>
                         <div class="desc">Золотой статус</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">💎 Elite</div>
+                        <div class="name">💎 Элита</div>
                         <div class="price">От 89 ₽</div>
                         <div class="desc">Элитные возможности</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">🌟 Deluxe</div>
+                        <div class="name">🌟 Делюкс</div>
                         <div class="price">От 129 ₽</div>
                         <div class="desc">Люкс пакет</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">🔥 Ultimate</div>
+                        <div class="name">🔥 Ультимейт</div>
                         <div class="price">От 169 ₽</div>
                         <div class="desc">Максимальная мощь</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">🏆 Magnate</div>
+                        <div class="name">💸 Магнат</div>
                         <div class="price">От 229 ₽</div>
                         <div class="desc">Магнат</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">👑 Imperial</div>
+                        <div class="name">👑 Империал</div>
                         <div class="price">От 299 ₽</div>
                         <div class="desc">Императорский статус</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">🤝 Sponsor</div>
+                        <div class="name">💰 Спонсор</div>
                         <div class="price">От 399 ₽</div>
                         <div class="desc">Спонсор сервера</div>
                     </div>
                     <div class="donate-item">
-                        <div class="name">🎨 Custom</div>
+                        <div class="name">🎨 Кастом</div>
                         <div class="price">От 549 ₽</div>
                         <div class="desc">Кастомная привилегия</div>
                     </div>
@@ -443,16 +478,16 @@
 
                     <label>Выберите привилегию</label>
                     <select id="privilege-select">
-                        <option value="Standard">Standard</option>
-                        <option value="Prestige">Prestige</option>
-                        <option value="Platinum">Platinum</option>
-                        <option value="Elite">Elite</option>
-                        <option value="Deluxe">Deluxe</option>
-                        <option value="Ultimate">Ultimate</option>
-                        <option value="Magnate">Magnate</option>
-                        <option value="Imperial">Imperial</option>
-                        <option value="Sponsor">Sponsor</option>
-                        <option value="Custom">Custom</option>
+                        <option value="Стандарь">Стандарт</option>
+                        <option value="Престиж">Престиж</option>
+                        <option value="Платинум">Платинум</option>
+                        <option value="Элита">Элита</option>
+                        <option value="Делюкс">Делюкс</option>
+                        <option value="Ультимейт">Ультимейт</option>
+                        <option value="Магнат">Магнат</option>
+                        <option value="Империал">Империал</option>
+                        <option value="Спонсор">Спонсор</option>
+                        <option value="Кастом">Кастом</option>
                     </select>
 
                     <button class="paypal-btn" onclick="paypalDonate()">💳 Оплатить через PayPal</button>
@@ -522,6 +557,15 @@
             });
         });
 
+        // Функция для перехода на главную страницу при клике на логотип
+        function goHome() {
+            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+            document.querySelector('.nav a[data-page="home"]').classList.add('active');
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-home').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // Копирование IP
         function copyIP() {
             const ip = document.getElementById('server-ip').innerText;
@@ -545,6 +589,18 @@
 
             alert(`Вы выбрали:\nНик: ${nick}\nСервер: ${server}\nПривилегия: ${priv}\n\nСейчас вы будете перенаправлены на PayPal для оплаты.`);
         }
+
+        // ----- СИМУЛЯЦИЯ ОНЛАЙНА -----
+        function updateOnline() {
+            const countEl = document.getElementById('online-count');
+            // Генерируем случайное число от 7 до 42
+            const randomOnline = Math.floor(Math.random() * 36) + 7;
+            countEl.textContent = randomOnline;
+        }
+        // Первое обновление при загрузке
+        updateOnline();
+        // Обновляем каждые 10 секунд
+        setInterval(updateOnline, 10000);
     </script>
 </body>
 </html>

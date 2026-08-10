@@ -13,30 +13,31 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
         }
         body {
-            background: #0b0b1a;
-            color: #e0e0e0;
+            background: #0a0a14;
+            color: #ddd;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             padding: 30px 15px;
+            background-image: url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        .wrapper {
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        /* --- ФОН С РАЗМЫТИЕМ --- */
-        .bg-blur {
+        /* Затемнение фона */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: rgba(10, 10, 20, 0.75);
             z-index: -1;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwMCA0MDAiPjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjMTUxNTMwIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9InVybCgjZ3JhZCkiLz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3BlLWNvbG9yPSIjMWEyYTNiIiBzdG9wLW9wYWNpdHk9IjAuNiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wZS1jb2xvcj0iIzBkMTEyNSIgc3RvcC1vcGFjaXR5PSIwLjgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48L3N2Zz4=') repeat;
-            filter: blur(8px);
-            opacity: 0.6;
-            transform: scale(1.1);
+        }
+        .wrapper {
+            max-width: 1200px;
+            width: 100%;
         }
 
         /* --- ШАПКА --- */
@@ -46,16 +47,16 @@
             align-items: center;
             flex-wrap: wrap;
             padding: 15px 0 25px;
-            border-bottom: 2px solid #f0a50033;
+            border-bottom: 2px solid rgba(231, 111, 81, 0.3);
         }
         .logo h1 {
             font-size: 2.6rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #a300fb, #ff6b00, #f0a500);
+            background: linear-gradient(135deg, #e76f51, #f4a261, #e76f51);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(240, 165, 0, 0.2);
+            text-shadow: 0 0 30px rgba(231, 111, 81, 0.2);
         }
         .logo span {
             font-size: 0.9rem;
@@ -69,7 +70,7 @@
             flex-wrap: wrap;
         }
         .nav a {
-            color: #ccc;
+            color: #aaa;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
@@ -80,8 +81,8 @@
         }
         .nav a:hover,
         .nav a.active {
-            color: #f0a500;
-            border-color: #f0a500;
+            color: #e76f51;
+            border-color: #e76f51;
         }
 
         /* --- СТРАНИЦЫ --- */
@@ -99,16 +100,16 @@
 
         /* --- КАРТОЧКИ --- */
         .card {
-            background: #14142be6;
-            backdrop-filter: blur(4px);
+            background: rgba(20, 20, 40, 0.85);
+            backdrop-filter: blur(6px);
             border-radius: 24px;
             padding: 30px;
             margin: 30px 0;
             border: 1px solid #2a2a4a;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
         }
         .card h2 {
-            color: #f0a500;
+            color: #e76f51;
             font-size: 2rem;
             margin-bottom: 15px;
         }
@@ -120,9 +121,9 @@
 
         /* --- IP БЛОК --- */
         .ip-box {
-            background: #0d0d24cc;
+            background: rgba(13, 13, 36, 0.85);
             backdrop-filter: blur(4px);
-            border: 2px dashed #f0a500;
+            border: 2px dashed #e76f51;
             border-radius: 20px;
             padding: 25px 20px;
             text-align: center;
@@ -136,7 +137,7 @@
             word-break: break-all;
         }
         .copy-btn {
-            background: #f0a500;
+            background: #e76f51;
             color: #0b0b1a;
             border: none;
             padding: 12px 30px;
@@ -148,19 +149,19 @@
             margin-top: 12px;
         }
         .copy-btn:hover {
-            background: #ffb700;
+            background: #d45d3e;
             transform: scale(1.03);
         }
 
         /* --- ДОНАТ --- */
         .donate-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
             margin: 25px 0;
         }
         .donate-item {
-            background: #1c1c3aee;
+            background: rgba(30, 30, 50, 0.7);
             backdrop-filter: blur(2px);
             padding: 20px;
             border-radius: 18px;
@@ -170,27 +171,27 @@
         }
         .donate-item:hover {
             transform: translateY(-5px);
-            border-color: #f0a500;
-            box-shadow: 0 8px 20px #f0a50022;
+            border-color: #e76f51;
+            box-shadow: 0 8px 20px rgba(231, 111, 81, 0.2);
         }
         .donate-item .name {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #f0a500;
+            color: #e76f51;
         }
         .donate-item .price {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #7ec8e3;
             margin: 8px 0;
         }
         .donate-item .desc {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.7;
         }
 
-        /* --- ФОРМА ДЛЯ ДОНАТА --- */
+        /* --- ФОРМА ДОНАТА --- */
         .donate-form {
-            background: #0f0f2acc;
+            background: rgba(15, 15, 42, 0.85);
             backdrop-filter: blur(4px);
             padding: 25px;
             border-radius: 20px;
@@ -232,7 +233,7 @@
         /* --- ЛАУНЧЕР --- */
         .launcher-btn {
             display: inline-block;
-            background: #f0a500;
+            background: #e76f51;
             color: #0b0b1a;
             padding: 14px 40px;
             border-radius: 40px;
@@ -245,21 +246,21 @@
             cursor: pointer;
         }
         .launcher-btn:hover {
-            background: #ffb700;
+            background: #d45d3e;
             transform: scale(1.03);
         }
 
         /* --- НОВОСТИ --- */
         .news-item {
-            background: #1a1a38cc;
+            background: rgba(26, 26, 56, 0.8);
             backdrop-filter: blur(4px);
             padding: 18px 22px;
             border-radius: 16px;
             margin-bottom: 15px;
-            border-left: 4px solid #f0a500;
+            border-left: 4px solid #e76f51;
         }
         .news-item .date {
-            color: #f0a500;
+            color: #e76f51;
             font-weight: bold;
             font-size: 0.9rem;
         }
@@ -277,7 +278,7 @@
             margin-top: 15px;
         }
         .social-links a {
-            background: #1e1e40cc;
+            background: rgba(30, 30, 64, 0.8);
             backdrop-filter: blur(4px);
             color: #eee;
             padding: 12px 24px;
@@ -288,9 +289,9 @@
             font-weight: 500;
         }
         .social-links a:hover {
-            background: #f0a500;
+            background: #e76f51;
             color: #0b0b1a;
-            border-color: #f0a500;
+            border-color: #e76f51;
         }
 
         /* --- ФУТЕР --- */
@@ -316,8 +317,6 @@
     </style>
 </head>
 <body>
-
-    <div class="bg-blur"></div>
 
     <div class="wrapper">
 
@@ -347,7 +346,7 @@
                 <button class="copy-btn" onclick="copyIP()">📋 Скопировать IP</button>
             </div>
             <div style="text-align: center; margin: 10px 0 30px;">
-                <span style="background: #f0a500; color: #0b0b1a; padding: 10px 25px; border-radius: 40px; font-weight: bold;">▶ Версия 1.20.1 · OptiFine / CIT Resewn</span>
+                <span style="background: #e76f51; color: #0b0b1a; padding: 10px 25px; border-radius: 40px; font-weight: bold;">▶ Версия 1.20.1 · OptiFine / CIT Resewn</span>
             </div>
             <!-- Лаунчер -->
             <div style="text-align: center;">
@@ -382,59 +381,58 @@
                 <div class="donate-grid">
                     <div class="donate-item">
                         <div class="name">🗡️ Standard</div>
-                        <div class="price">19 ₽ / 30 дн.</div>
+                        <div class="price">19 ₽</div>
                         <div class="desc">Базовые привилегии</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">👑 Prestige</div>
-                        <div class="price">35 ₽ / 30 дн.</div>
+                        <div class="price">35 ₽</div>
                         <div class="desc">Улучшенный набор</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">⭐ Platinum</div>
-                        <div class="price">59 ₽ / 30 дн.</div>
+                        <div class="price">59 ₽</div>
                         <div class="desc">Золотой статус</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">💎 Elite</div>
-                        <div class="price">89 ₽ / 30 дн.</div>
+                        <div class="price">89 ₽</div>
                         <div class="desc">Элитные возможности</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">🌟 Deluxe</div>
-                        <div class="price">129 ₽ / 30 дн.</div>
+                        <div class="price">129 ₽</div>
                         <div class="desc">Люкс пакет</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">🔥 Ultimate</div>
-                        <div class="price">169 ₽ / 30 дн.</div>
+                        <div class="price">169 ₽</div>
                         <div class="desc">Максимальная мощь</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">🏆 Magnate</div>
-                        <div class="price">229 ₽ / 30 дн.</div>
+                        <div class="price">229 ₽</div>
                         <div class="desc">Магнат</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">👑 Imperial</div>
-                        <div class="price">299 ₽ / 30 дн.</div>
+                        <div class="price">299 ₽</div>
                         <div class="desc">Императорский статус</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">🤝 Sponsor</div>
-                        <div class="price">399 ₽ / 30 дн.</div>
+                        <div class="price">399 ₽</div>
                         <div class="desc">Спонсор сервера</div>
                     </div>
                     <div class="donate-item">
                         <div class="name">🎨 Custom</div>
-                        <div class="price">549 ₽ / 30 дн.</div>
+                        <div class="price">549 ₽</div>
                         <div class="desc">Кастомная привилегия</div>
                     </div>
                 </div>
 
-                <!-- Форма заказа -->
                 <div class="donate-form">
-                    <h3 style="color:#f0a500; margin-bottom:20px;">🛒 Оформить донат</h3>
+                    <h3 style="color:#e76f51; margin-bottom:20px;">🛒 Оформить донат</h3>
                     <label>Ваш ник на сервере</label>
                     <input type="text" id="nickname" placeholder="Введите ник..." required>
 
@@ -535,7 +533,7 @@
             }).catch(() => alert('Скопируй вручную: ' + ip));
         }
 
-        // PayPal оплата (заглушка)
+        // PayPal
         function paypalDonate() {
             const nick = document.getElementById('nickname').value.trim();
             const server = document.getElementById('server-select').value;
@@ -546,10 +544,7 @@
                 return;
             }
 
-            // Здесь можно собрать данные и отправить на PayPal или свой бекенд
             alert(`Вы выбрали:\nНик: ${nick}\nСервер: ${server}\nПривилегия: ${priv}\n\nСейчас вы будете перенаправлены на PayPal для оплаты.`);
-            // Замени ссылку на свою PayPal-ссылку с параметрами
-            // window.location.href = 'https://www.paypal.com/donate?business=...';
         }
     </script>
 </body>

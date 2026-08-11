@@ -24,7 +24,6 @@
             background-position: center;
             background-attachment: fixed;
         }
-        /* Затемнение фона */
         body::before {
             content: '';
             position: fixed;
@@ -88,7 +87,6 @@
             border-color: #e76f51;
         }
 
-        /* СТАТИСТИКА В ШАПКЕ */
         .header-stats {
             display: flex;
             align-items: center;
@@ -284,7 +282,7 @@
             opacity: 0.8;
         }
         .paypal-btn {
-            background: #0070ba;
+            background: #28a745;
             color: white;
             border: none;
             padding: 14px 30px;
@@ -297,28 +295,40 @@
             margin-top: 10px;
         }
         .paypal-btn:hover {
-            background: #005c9e;
+            background: #218838;
             transform: scale(1.02);
         }
 
-        /* --- НОВОСТИ --- */
-        .news-item {
-            background: rgba(26, 26, 56, 0.8);
-            backdrop-filter: blur(4px);
-            padding: 18px 22px;
-            border-radius: 16px;
-            margin-bottom: 15px;
+        /* --- ПРАВИЛА (стили для списков) --- */
+        .rules-section {
+            margin-bottom: 25px;
+        }
+        .rules-section h3 {
+            color: #f4a261;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
             border-left: 4px solid #e76f51;
+            padding-left: 15px;
         }
-        .news-item .date {
+        .rules-section ul, .rules-section ol {
+            padding-left: 25px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .rules-section li {
+            margin-bottom: 5px;
+        }
+        .rules-section p {
+            margin-bottom: 8px;
+        }
+        .rules-term {
+            background: rgba(231, 111, 81, 0.15);
+            padding: 10px 18px;
+            border-radius: 12px;
+            margin: 10px 0;
+        }
+        .rules-term strong {
             color: #e76f51;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        .news-item .title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 5px 0;
         }
 
         /* --- СОЦСЕТИ --- */
@@ -355,7 +365,6 @@
             margin-top: 30px;
         }
 
-        /* --- АДАПТИВ --- */
         @media (max-width: 700px) {
             .header { flex-direction: column; align-items: start; gap: 15px; }
             .nav { gap: 15px; }
@@ -371,306 +380,318 @@
 </head>
 <body>
 
-    <div class="wrapper">
+<div class="wrapper">
 
-        <!-- ШАПКА -->
-        <header class="header">
-            <div class="logo" onclick="goHome()">
-                <h1>Uncharted Land</h1>
-                <span>Выживание · РП · Бомжбург</span>
-            </div>
-
-            <!-- Блок статистики справа -->
-            <div class="header-stats">
-                <span>
-                    <span class="online-dot loading" id="online-dot"></span>
-                    <span class="online-count" id="online-count">...</span>
-                    <span class="online-label">онлайн</span>
-                </span>
-                <span class="status-text loading" id="status-text">Загрузка...</span>
-                <span class="ip-small">unchartedland.go-mc.xyz</span>
-            </div>
-
-            <nav class="nav">
-                <a class="active" data-page="home">Главная</a>
-                <a data-page="about">О сервере</a>
-                <a data-page="donate">Донат</a>
-                <a data-page="news">Новости</a>
-                <a data-page="contacts">Контакты</a>
-            </nav>
-        </header>
-
-        <!-- ГЛАВНАЯ -->
-        <div id="page-home" class="page active">
-            <div class="card">
-                <h2>Добро пожаловать</h2>
-                <p>Uncharted Land — уникальный сервер с атмосферой выживания, ролевой игрой,своей экономикой и механиками, которых нет больше ни у кого.</p>
-            </div>
-            <div class="ip-box">
-                <div class="ip" id="server-ip">unchartedland.go-mc.xyz</div>
-                <button class="copy-btn" onclick="copyIP()">📋 Скопировать IP</button>
-            </div>
-            <div style="text-align: center; margin: 10px 0 30px;">
-                <span style="background: #e76f51; color: #0b0b1a; padding: 10px 25px; border-radius: 40px; font-weight: bold;">▶ Версия 1.20.1 · OptiFine / CIT Resewn</span>
-            </div>
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="logo" onclick="goHome()">
+            <h1>Uncharted Land</h1>
+            <span>Выживание · РП · Бомжбург</span>
         </div>
 
-        <!-- О СЕРВЕРЕ -->
-        <div id="page-about" class="page">
-            <div class="card">
-                <h2>О проекте:</h2>
-                <p><strong>Uncharted Land</strong> — это сервер, где ты начинаешь свое уникальное выживание с нуля.Твоя главная цель-стать самым богатым и узнаваемым</p>
-                <p><strong>Бомжбург:</strong>
-                <p>🔸 Сбор бутылок, макулатуры, незаконная торговля у барыги<br>
-                🔸 Квесты, уровни, зоны доступа через RP-уровень<br>
-                🔸 Канализация, крысы, стаи псов<br>
-                🔸 Покупка недвижимости<br>
-                🔸 Огнестрельное оружие (Tec-9) и лицензии<br>
-                🔸 Экономика, голод, жажда, стамина</p>
-                <br>
-                <p>Каждый игрок строит свою историю. Присоединяйся!</p>
-            </div>
+        <div class="header-stats">
+            <span>
+                <span class="online-dot loading" id="online-dot"></span>
+                <span class="online-count" id="online-count">...</span>
+                <span class="online-label">онлайн</span>
+            </span>
+            <span class="status-text loading" id="status-text">Загрузка...</span>
+            <span class="ip-small">unchartedland.go-mc.xyz</span>
         </div>
 
-        <!-- ДОНАТ -->
-        <div id="page-donate" class="page">
-            <div class="card">
-                <h2>Донат услуги</h2>
-                <p>У нас есть привилегии и услуги, которые сделают игру комфортнее.</p>
+        <nav class="nav">
+            <a class="active" data-page="home">Главная</a>
+            <a data-page="about">О сервере</a>
+            <a data-page="donate">Донат</a>
+            <a data-page="rules">Правила</a>
+            <a data-page="contacts">Контакты</a>
+        </nav>
+    </header>
 
-                <div class="donate-grid">
-                    <div class="donate-item">
-                        <div class="name">🗡️ Стандарт</div>
-                        <div class="price">От 19 ₽</div>
-                        <div class="desc">Базовые привилегии</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">🎩 Престиж</div>
-                        <div class="price">От 35 ₽</div>
-                        <div class="desc">Улучшенный набор</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">⭐ Платинум</div>
-                        <div class="price">От 59 ₽</div>
-                        <div class="desc">Золотой статус</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">💎 Элита</div>
-                        <div class="price">От 89 ₽</div>
-                        <div class="desc">Элитные возможности</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">🌟 Делюкс</div>
-                        <div class="price">От 129 ₽</div>
-                        <div class="desc">Люкс пакет</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">🔥 Ультимейт</div>
-                        <div class="price">От 169 ₽</div>
-                        <div class="desc">Максимальная мощь</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">💸 Магнат</div>
-                        <div class="price">От 229 ₽</div>
-                        <div class="desc">Магнат</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">👑 Империал</div>
-                        <div class="price">От 299 ₽</div>
-                        <div class="desc">Императорский статус</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">💰 Спонсор</div>
-                        <div class="price">От 399 ₽</div>
-                        <div class="desc">Спонсор сервера</div>
-                    </div>
-                    <div class="donate-item">
-                        <div class="name">🎨 Кастом</div>
-                        <div class="price">От 549 ₽</div>
-                        <div class="desc">Кастомная привилегия</div>
-                    </div>
-                </div>
-
-                <div class="donate-form">
-                    <h3 style="color:#e76f51; margin-bottom:20px;">🛒 Оформить услугу</h3>
-                    <label>Ваш ник на сервере</label>
-                    <input type="text" id="nickname" placeholder="Введите ник..." required>
-
-                    <label>Выберите сервер</label>
-                    <select id="server-select">
-                        <option value="Бомжбург">Бомжбург</option>
-                    </select>
-
-                    <label>Выберите привилегию</label>
-                    <select id="privilege-select">
-                        <option value="Стандарь">Стандарт</option>
-                        <option value="Престиж">Престиж</option>
-                        <option value="Платинум">Платинум</option>
-                        <option value="Элита">Элита</option>
-                        <option value="Делюкс">Делюкс</option>
-                        <option value="Ультимейт">Ультимейт</option>
-                        <option value="Магнат">Магнат</option>
-                        <option value="Империал">Империал</option>
-                        <option value="Спонсор">Спонсор</option>
-                        <option value="Кастом">Кастом</option>
-                    </select>
-
-                    <button class="paypal-btn" onclick="paypalDonate()">💳 Оплатить через PayPal</button>
-                    <p style="margin-top:10px; opacity:0.5; font-size:0.9rem;">После оплаты привилегия будет выдана автоматически</p>
-                </div>
-            </div>
+    <!-- ГЛАВНАЯ -->
+    <div id="page-home" class="page active">
+        <div class="card">
+            <h2>Добро пожаловать</h2>
+            <p>Uncharted Land — уникальный сервер с атмосферой выживания, ролевой игрой, своей экономикой и механиками, которых нет больше ни у кого.</p>
         </div>
-
-        <!-- НОВОСТИ -->
-        <div id="page-news" class="page">
-            <div class="card">
-                <h2>📰 Последние новости</h2>
-                <div class="news-item">
-                    <div class="date">10 августа 2026</div>
-                    <div class="title">Добавлен Tec-9 и переработана механика здоровья</div>
-                    <p>Первое огнестрельное оружие уже в игре. Покупка у Петровича.</p>
-                </div>
-                <div class="news-item">
-                    <div class="date">08 августа 2026</div>
-                    <div class="title">Новая квартира в среднем районе</div>
-                    <p>Теперь доступно жильё в новом районе. Спешите купить.</p>
-                </div>
-                <div class="news-item">
-                    <div class="date">06 августа 2026</div>
-                    <div class="title">Обновление текстур: мед-книжка, права, лицензия</div>
-                    <p>Добавлены 3D-модели для документов и аптечки.</p>
-                </div>
-                <p style="margin-top:20px; opacity:0.6;">📌 Все новости также публикуются в Telegram и ВКонтакте.</p>
-            </div>
+        <div class="ip-box">
+            <div class="ip" id="server-ip">unchartedland.go-mc.xyz</div>
+            <button class="copy-btn" onclick="copyIP()">📋 Скопировать IP</button>
         </div>
-
-        <!-- КОНТАКТЫ -->
-        <div id="page-contacts" class="page">
-            <div class="card">
-                <h2>📬 Мы в соцсетях</h2>
-                <p>Подписывайся, чтобы быть в курсе всех новостей и событий сервера.</p>
-                <div class="social-links">
-                    <a href="https://t.me/BomjBurg" target="_blank">📱 Telegram</a>
-                    <a href="https://vk.ru/bomjburg" target="_blank">📘 ВКонтакте</a>
-                    <a href="https://discord.gg/QN9r2cRBRh" target="_blank">💬 Discord</a>
-                    <a href="https://www.tiktok.com/@bomjburg3?_r=1&_t=ZP-98lsf1DbNfC" target="_blank">🎬 TikTok</a>
-                </div>
-                <br>
-                <p>📧 По вопросам: <strong>bomjburg@gmail.com</strong></p>
-            </div>
+        <div style="text-align: center; margin: 10px 0 30px;">
+            <span style="background: #e76f51; color: #0b0b1a; padding: 10px 25px; border-radius: 40px; font-weight: bold;">▶ Версия 1.20.1 · OptiFine / CIT Resewn</span>
         </div>
-
-        <!-- ФУТЕР -->
-        <div class="footer">
-            © 2026 Uncharted Land · Все права защищены
-        </div>
-
     </div>
 
-    <script>
-        // Переключение вкладок
-        document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pageId = this.dataset.page;
-                document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-                this.classList.add('active');
-                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                const target = document.getElementById('page-' + pageId);
-                if (target) target.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
+    <!-- О СЕРВЕРЕ -->
+    <div id="page-about" class="page">
+        <div class="card">
+            <h2>О проекте</h2>
+            <p><strong>Uncharted Land</strong> — это сервер, где ты начинаешь своё уникальное выживание с нуля. Твоя главная цель — стать самым богатым и узнаваемым.</p>
+            <p><strong>Бомжбург:</strong></p>
+            <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                <li>🔸 Сбор бутылок, макулатуры, незаконная торговля у барыги</li>
+                <li>🔸 Квесты, уровни, зоны доступа через RP-уровень</li>
+                <li>🔸 Канализация, крысы, стаи псов</li>
+                <li>🔸 Покупка недвижимости</li>
+                <li>🔸 Огнестрельное оружие (Tec-9) и лицензии</li>
+                <li>🔸 Экономика, голод, жажда, стамина</li>
+            </ul>
+            <br>
+            <p>Каждый игрок строит свою историю. Присоединяйся!</p>
+        </div>
+    </div>
 
-        // Функция для перехода на главную страницу при клике на логотип
-        function goHome() {
+    <!-- ДОНАТ -->
+    <div id="page-donate" class="page">
+        <div class="card">
+            <h2>Донат услуги</h2>
+            <p>У нас есть привилегии и услуги, которые сделают игру комфортнее.</p>
+
+            <div class="donate-grid">
+                <div class="donate-item"><div class="name">🗡️ Стандарт</div><div class="price">От 19 ₽</div><div class="desc">Базовые привилегии</div></div>
+                <div class="donate-item"><div class="name">🎩 Престиж</div><div class="price">От 35 ₽</div><div class="desc">Улучшенный набор</div></div>
+                <div class="donate-item"><div class="name">⭐ Платинум</div><div class="price">От 59 ₽</div><div class="desc">Золотой статус</div></div>
+                <div class="donate-item"><div class="name">💎 Элита</div><div class="price">От 89 ₽</div><div class="desc">Элитные возможности</div></div>
+                <div class="donate-item"><div class="name">🌟 Делюкс</div><div class="price">От 129 ₽</div><div class="desc">Люкс пакет</div></div>
+                <div class="donate-item"><div class="name">🔥 Ультимейт</div><div class="price">От 169 ₽</div><div class="desc">Максимальная мощь</div></div>
+                <div class="donate-item"><div class="name">💸 Магнат</div><div class="price">От 229 ₽</div><div class="desc">Магнат</div></div>
+                <div class="donate-item"><div class="name">👑 Империал</div><div class="price">От 299 ₽</div><div class="desc">Императорский статус</div></div>
+                <div class="donate-item"><div class="name">💰 Спонсор</div><div class="price">От 399 ₽</div><div class="desc">Спонсор сервера</div></div>
+                <div class="donate-item"><div class="name">🎨 Кастом</div><div class="price">От 549 ₽</div><div class="desc">Кастомная привилегия</div></div>
+            </div>
+
+            <div class="donate-form">
+                <h3 style="color:#e76f51; margin-bottom:20px;">🛒 Оформить услугу</h3>
+                <label>Ваш ник на сервере</label>
+                <input type="text" id="nickname" placeholder="Введите ник..." required>
+
+                <label>Выберите сервер</label>
+                <select id="server-select">
+                    <option value="Бомжбург">Бомжбург</option>
+                </select>
+
+                <label>Выберите привилегию</label>
+                <select id="privilege-select">
+                    <option value="Стандарт">Стандарт</option>
+                    <option value="Престиж">Престиж</option>
+                    <option value="Платинум">Платинум</option>
+                    <option value="Элита">Элита</option>
+                    <option value="Делюкс">Делюкс</option>
+                    <option value="Ультимейт">Ультимейт</option>
+                    <option value="Магнат">Магнат</option>
+                    <option value="Империал">Империал</option>
+                    <option value="Спонсор">Спонсор</option>
+                    <option value="Кастом">Кастом</option>
+                </select>
+
+                <button class="paypal-btn" onclick="paypalDonate()">💳 Оплатить</button>
+                <p style="margin-top:10px; opacity:0.5; font-size:0.9rem;">После оплаты привилегия будет выдана автоматически</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПРАВИЛА (вместо новостей) -->
+    <div id="page-rules" class="page">
+        <div class="card">
+            <h2>📜 Правила Бомжбурга</h2>
+            <div class="rules-section">
+                <h3>Термины</h3>
+                <div class="rules-term">
+                    <p><strong>Мут</strong> — блокировка чата</p>
+                    <p><strong>Бан</strong> — блокировка аккаунта на сервере</p>
+                    <p><strong>Читы</strong> — сторонние программы или моды, которые дают нечестное преимущество в игре</p>
+                    <p><strong>Дюп</strong> — дублирование предметов или валюты методом использования через ошибки игры или баги</p>
+                    <p><strong>Баг</strong> — ошибка, позволяющая сделать что-то, что не предусмотренно разработчиками</p>
+                </div>
+            </div>
+
+            <div class="rules-section">
+                <h3>Общие положения</h3>
+                <ul>
+                    <li>Правила действуют для всех. Незнание — не оправдание.</li>
+                    <li>Администрация может менять правила без предупреждения.</li>
+                    <li>Ролевая игра НЕ обязательна. Можно как хочешь, главное не мешать другим.</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Общение</h3>
+                <ul>
+                    <li>Запрещены любые виды оскорблений → мут от 15 минут до суток.</li>
+                    <li>Запрещено разглашать личные данные других игроков → бан от 1 до 7 дней.</li>
+                    <li>Нельзя попрошайничать → мут до 3 часов.</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Геймплей</h3>
+                <ul>
+                    <li>Вы сами решаете, кому выдавать доступ к сундукам и бочкам через команду с флагом. Если гость, которому вы доверились, украдёт ваши вещи, мы не сможем помочь без доказательств. Без вашего разрешения никто ничего не возьмёт — это гарантировано.</li>
+                    <li>Читы, дюпы, использование багов → бан от 7 дней до перманетного бана. Нашёл баг? Сообщи — получи награду.</li>
+                    <li>PvP - Разрешено в зонах кроме спавна, но нельзя попадаться полиции. Иначе → тюрьма 30 минут до 12 часов.</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Строительство и механики</h3>
+                <ul>
+                    <li>Запрещено строить оскорбительные или неприемлемые постройки → бан до 14 дней.</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Чат и коммуникация</h3>
+                <ul>
+                    <li>Запрещено флудить (4+ одинаковых сообщений подряд) → мут до 12 часов.</li>
+                    <li>Запрещено писать сообщения КАПСОМ (больше 10 заглавных букв) → мут до 6 часов.</li>
+                    <li>Реклама других серверов и проектов → бан от 3 до 30 дней.</li>
+                    <li>Запрещено обсуждать читы и взломы → мут до 24 часов.</li>
+                    <li>Вопросы по игре и технические моменты задавать администраторам\модераторам или в наш Discord-сервер.</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Технические моменты</h3>
+                <ul>
+                    <li>Для отображения текстур мы используем CIT - Custom Item Textures. Поэтому использование OptiFine или CIT Resewn крайне рекомендуется, но мы никого не заставляем.</li>
+                    <li>Разрешены: ресурспаки, шейдеры (без преимущества в игре), клиенты для слабых ПК, моды для биндов, автокликеры.</li>
+                    <li>Запрещены: моды, дающие преимущество (Fly, Speed, KillAura, Radar и т.п.) → бан от 30 дней до перманента.</li>
+                    <li>Крайне не рекомендуется использовать больше 5 аккаунтов с одного IP.</li>
+                    <li>Претензии по откату вещей принимаются только с доказательствами (скриншоты или видео).</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Команда и торговля</h3>
+                <ul>
+                    <li>Попытка обмануть администрацию → бан от 7 до 90 дней.</li>
+                    <li>Мошенничество при торговле → бан от 14 до 90 дней и компенсация.</li>
+                    <li>Жалобы на команду принимаются через Discord-сервер.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- КОНТАКТЫ -->
+    <div id="page-contacts" class="page">
+        <div class="card">
+            <h2>📬 Мы в соцсетях</h2>
+            <p>Подписывайся, чтобы быть в курсе всех новостей и событий сервера.</p>
+            <div class="social-links">
+                <a href="https://t.me/BomjBurg" target="_blank">📱 Telegram</a>
+                <a href="https://vk.ru/bomjburg" target="_blank">📘 ВКонтакте</a>
+                <a href="https://discord.gg/QN9r2cRBRh" target="_blank">💬 Discord</a>
+                <a href="https://www.tiktok.com/@bomjburg3?_r=1&_t=ZP-98lsf1DbNfC" target="_blank">🎬 TikTok</a>
+            </div>
+            <br>
+            <p>📧 По вопросам: <strong>bomjburg@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <!-- ФУТЕР -->
+    <div class="footer">
+        © 2026 Uncharted Land · Все права защищены
+    </div>
+
+</div>
+
+<script>
+    // Переключение вкладок
+    document.querySelectorAll('.nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pageId = this.dataset.page;
             document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-            document.querySelector('.nav a[data-page="home"]').classList.add('active');
+            this.classList.add('active');
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-home').classList.add('active');
+            const target = document.getElementById('page-' + pageId);
+            if (target) target.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    function goHome() {
+        document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+        document.querySelector('.nav a[data-page="home"]').classList.add('active');
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page-home').classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Копирование IP
+    function copyIP() {
+        const ip = document.getElementById('server-ip').innerText;
+        navigator.clipboard.writeText(ip).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.textContent = '✅ Скопировано!';
+            setTimeout(() => btn.textContent = '📋 Скопировать IP', 2500);
+        }).catch(() => alert('Скопируй вручную: ' + ip));
+    }
+
+    // PayPal (зелёная кнопка, просто "Оплатить")
+    function paypalDonate() {
+        const nick = document.getElementById('nickname').value.trim();
+        const server = document.getElementById('server-select').value;
+        const priv = document.getElementById('privilege-select').value;
+
+        if (!nick) {
+            alert('Пожалуйста, укажите ваш ник.');
+            return;
         }
 
-        // Копирование IP (без порта)
-        function copyIP() {
-            const ip = document.getElementById('server-ip').innerText;
-            navigator.clipboard.writeText(ip).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                btn.textContent = '✅ Скопировано!';
-                setTimeout(() => btn.textContent = '📋 Скопировать IP', 2500);
-            }).catch(() => alert('Скопируй вручную: ' + ip));
-        }
+        alert(`Вы выбрали:\nНик: ${nick}\nСервер: ${server}\nПривилегия: ${priv}\n\nСейчас вы будете перенаправлены на PayPal для оплаты.`);
+        // Здесь можно вставить реальный редирект на PayPal
+    }
 
-        // PayPal
-        function paypalDonate() {
-            const nick = document.getElementById('nickname').value.trim();
-            const server = document.getElementById('server-select').value;
-            const priv = document.getElementById('privilege-select').value;
+    // ----- РЕАЛЬНЫЙ ОНЛАЙН (используем реальный IP: 37.230.228.60:25667) -----
+    async function fetchServerStatus() {
+        const displayIp = 'unchartedland.go-mc.xyz';  // то, что показываем
+        const realIp = '37.230.228.60';
+        const port = 25667;
 
-            if (!nick) {
-                alert('Пожалуйста, укажите ваш ник.');
-                return;
-            }
+        const dot = document.getElementById('online-dot');
+        const countEl = document.getElementById('online-count');
+        const statusText = document.getElementById('status-text');
 
-            alert(`Вы выбрали:\nНик: ${nick}\nСервер: ${server}\nПривилегия: ${priv}\n\nСейчас вы будете перенаправлены на PayPal для оплаты.`);
-        }
+        dot.className = 'online-dot loading';
+        statusText.textContent = 'Загрузка...';
+        statusText.className = 'status-text loading';
 
-        // ----- РЕАЛЬНЫЙ ОНЛАЙН СЕРВЕРА (ПОРТ 25667, НО НЕ ПОКАЗЫВАЕТСЯ) -----
-        async function fetchServerStatus() {
-            const ip = 'unchartedland.go-mc.xyz';
-            const port = 25667;
-            const dot = document.getElementById('online-dot');
-            const countEl = document.getElementById('online-count');
-            const statusText = document.getElementById('status-text');
-
-            // Показываем состояние загрузки
-            dot.className = 'online-dot loading';
-            statusText.textContent = 'Загрузка...';
-            statusText.className = 'status-text loading';
-
-            try {
-                // Используем публичное API для проверки статуса Minecraft сервера
-                // Добавляем User-Agent для корректной работы API
-                const response = await fetch(`https://api.mcsrvstat.us/3/${ip}:${port}`, {
-                    headers: {
-                        'User-Agent': 'UnchartedLand-Website/1.0 (support@unchartedland.ru)'
-                    }
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`Ошибка HTTP: ${response.status}`);
+        try {
+            const response = await fetch(`https://api.mcsrvstat.us/3/${realIp}:${port}`, {
+                headers: {
+                    'User-Agent': 'UnchartedLand-Website/1.0 (support@unchartedland.ru)'
                 }
+            });
 
-                const data = await response.json();
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-                if (data.online) {
-                    // Сервер онлайн
-                    dot.className = 'online-dot';
-                    countEl.textContent = data.players?.online || '0';
-                    statusText.textContent = '🟢 Онлайн';
-                    statusText.className = 'status-text online';
-                } else {
-                    // Сервер оффлайн
-                    dot.className = 'online-dot offline';
-                    countEl.textContent = '0';
-                    statusText.textContent = '🔴 Оффлайн';
-                    statusText.className = 'status-text offline';
-                }
-            } catch (error) {
-                console.error('Ошибка получения статуса сервера:', error);
-                // В случае ошибки показываем "недоступно"
+            const data = await response.json();
+
+            if (data.online) {
+                dot.className = 'online-dot';
+                countEl.textContent = data.players?.online || '0';
+                statusText.textContent = '🟢 Онлайн';
+                statusText.className = 'status-text online';
+            } else {
                 dot.className = 'online-dot offline';
-                countEl.textContent = '?';
-                statusText.textContent = '⚠️ Недоступно';
+                countEl.textContent = '0';
+                statusText.textContent = '🔴 Оффлайн';
                 statusText.className = 'status-text offline';
             }
+        } catch (error) {
+            console.error('Ошибка получения статуса:', error);
+            dot.className = 'online-dot offline';
+            countEl.textContent = '?';
+            statusText.textContent = '⚠️ Недоступно';
+            statusText.className = 'status-text offline';
         }
+    }
 
-        // Загружаем статус при открытии страницы
-        fetchServerStatus();
-
-        // Обновляем каждые 30 секунд
-        setInterval(fetchServerStatus, 30000);
-    </script>
+    // Запускаем при загрузке и обновляем каждые 30 секунд
+    fetchServerStatus();
+    setInterval(fetchServerStatus, 30000);
+</script>
 </body>
 </html>

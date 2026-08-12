@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uncharted Land — Minecraft сервер</title>
     <style>
-        /* --- БАЗА --- */
         * {
             margin: 0;
             padding: 0;
@@ -39,7 +38,6 @@
             width: 100%;
         }
 
-        /* --- ШАПКА --- */
         .header {
             display: flex;
             justify-content: space-between;
@@ -154,7 +152,6 @@
             color: #ff9800;
         }
 
-        /* --- СТРАНИЦЫ --- */
         .page {
             display: none;
             animation: fade 0.4s ease;
@@ -167,7 +164,6 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- КАРТОЧКИ --- */
         .card {
             background: rgba(20, 20, 40, 0.85);
             backdrop-filter: blur(6px);
@@ -188,7 +184,6 @@
             opacity: 0.9;
         }
 
-        /* --- IP БЛОК --- */
         .ip-box {
             background: rgba(13, 13, 36, 0.85);
             backdrop-filter: blur(4px);
@@ -222,7 +217,6 @@
             transform: scale(1.03);
         }
 
-        /* --- ДОНАТ --- */
         .donate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -257,8 +251,6 @@
             font-size: 0.85rem;
             opacity: 0.7;
         }
-
-        /* --- ФОРМА ДОНАТА --- */
         .donate-form {
             background: rgba(15, 15, 42, 0.85);
             backdrop-filter: blur(4px);
@@ -299,7 +291,6 @@
             transform: scale(1.02);
         }
 
-        /* --- ПРАВИЛА (стили для списков) --- */
         .rules-section {
             margin-bottom: 25px;
         }
@@ -331,7 +322,6 @@
             color: #e76f51;
         }
 
-        /* --- СОЦСЕТИ --- */
         .social-links {
             display: flex;
             flex-wrap: wrap;
@@ -355,7 +345,6 @@
             border-color: #e76f51;
         }
 
-        /* --- ФУТЕР --- */
         .footer {
             text-align: center;
             padding: 30px 0 10px;
@@ -382,7 +371,6 @@
 
 <div class="wrapper">
 
-    <!-- ШАПКА -->
     <header class="header">
         <div class="logo" onclick="goHome()">
             <h1>Uncharted Land</h1>
@@ -402,13 +390,12 @@
         <nav class="nav">
             <a class="active" data-page="home">Главная</a>
             <a data-page="about">О сервере</a>
-            <a data-page="donate">Донат</a>
+            <!-- <a data-page="donate">Донат</a> -->
             <a data-page="rules">Правила</a>
             <a data-page="contacts">Контакты</a>
         </nav>
     </header>
 
-    <!-- ГЛАВНАЯ -->
     <div id="page-home" class="page active">
         <div class="card">
             <h2>Добро пожаловать</h2>
@@ -423,7 +410,6 @@
         </div>
     </div>
 
-    <!-- О СЕРВЕРЕ -->
     <div id="page-about" class="page">
         <div class="card">
             <h2>О проекте</h2>
@@ -442,7 +428,7 @@
         </div>
     </div>
 
-    <!-- ДОНАТ -->
+    <!--
     <div id="page-donate" class="page">
         <div class="card">
             <h2>Донат услуги</h2>
@@ -490,8 +476,8 @@
             </div>
         </div>
     </div>
+    -->
 
-    <!-- ПРАВИЛА (вместо новостей) -->
     <div id="page-rules" class="page">
         <div class="card">
             <h2>📜 Правила Бомжбурга</h2>
@@ -573,7 +559,6 @@
         </div>
     </div>
 
-    <!-- КОНТАКТЫ -->
     <div id="page-contacts" class="page">
         <div class="card">
             <h2>📬 Мы в соцсетях</h2>
@@ -589,7 +574,6 @@
         </div>
     </div>
 
-    <!-- ФУТЕР -->
     <div class="footer">
         © 2026 Uncharted Land · Все права защищены
     </div>
@@ -597,7 +581,6 @@
 </div>
 
 <script>
-    // Переключение вкладок
     document.querySelectorAll('.nav a').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -619,7 +602,6 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Копирование IP
     function copyIP() {
         const ip = document.getElementById('server-ip').innerText;
         navigator.clipboard.writeText(ip).then(() => {
@@ -629,7 +611,7 @@
         }).catch(() => alert('Скопируй вручную: ' + ip));
     }
 
-    // PayPal (зелёная кнопка, просто "Оплатить")
+    /*
     function paypalDonate() {
         const nick = document.getElementById('nickname').value.trim();
         const server = document.getElementById('server-select').value;
@@ -643,10 +625,9 @@
         alert(`Вы выбрали:\nНик: ${nick}\nСервер: ${server}\nПривилегия: ${priv}\n\nСейчас вы будете перенаправлены на PayPal для оплаты.`);
         // Здесь можно вставить реальный редирект на PayPal
     }
+    */
 
-    // ----- РЕАЛЬНЫЙ ОНЛАЙН (используем реальный IP: 37.230.228.60:25667) -----
     async function fetchServerStatus() {
-        const displayIp = 'unchartedland.go-mc.xyz';  // то, что показываем
         const realIp = '37.230.228.60';
         const port = 25667;
 
@@ -689,7 +670,6 @@
         }
     }
 
-    // Запускаем при загрузке и обновляем каждые 30 секунд
     fetchServerStatus();
     setInterval(fetchServerStatus, 30000);
 </script>

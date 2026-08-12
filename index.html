@@ -390,7 +390,6 @@
         <nav class="nav">
             <a class="active" data-page="home">Главная</a>
             <a data-page="about">О сервере</a>
-            <!-- <a data-page="donate">Донат</a> -->
             <a data-page="rules">Правила</a>
             <a data-page="contacts">Контакты</a>
         </nav>
@@ -427,56 +426,6 @@
             <p>Каждый игрок строит свою историю. Присоединяйся!</p>
         </div>
     </div>
-
-    <!--
-    <div id="page-donate" class="page">
-        <div class="card">
-            <h2>Донат услуги</h2>
-            <p>У нас есть привилегии и услуги, которые сделают игру комфортнее.</p>
-
-            <div class="donate-grid">
-                <div class="donate-item"><div class="name">🗡️ Стандарт</div><div class="price">От 19 ₽</div><div class="desc">Базовые привилегии</div></div>
-                <div class="donate-item"><div class="name">🎩 Престиж</div><div class="price">От 35 ₽</div><div class="desc">Улучшенный набор</div></div>
-                <div class="donate-item"><div class="name">⭐ Платинум</div><div class="price">От 59 ₽</div><div class="desc">Золотой статус</div></div>
-                <div class="donate-item"><div class="name">💎 Элита</div><div class="price">От 89 ₽</div><div class="desc">Элитные возможности</div></div>
-                <div class="donate-item"><div class="name">🌟 Делюкс</div><div class="price">От 129 ₽</div><div class="desc">Люкс пакет</div></div>
-                <div class="donate-item"><div class="name">🔥 Ультимейт</div><div class="price">От 169 ₽</div><div class="desc">Максимальная мощь</div></div>
-                <div class="donate-item"><div class="name">💸 Магнат</div><div class="price">От 229 ₽</div><div class="desc">Магнат</div></div>
-                <div class="donate-item"><div class="name">👑 Империал</div><div class="price">От 299 ₽</div><div class="desc">Императорский статус</div></div>
-                <div class="donate-item"><div class="name">💰 Спонсор</div><div class="price">От 399 ₽</div><div class="desc">Спонсор сервера</div></div>
-                <div class="donate-item"><div class="name">🎨 Кастом</div><div class="price">От 549 ₽</div><div class="desc">Кастомная привилегия</div></div>
-            </div>
-
-            <div class="donate-form">
-                <h3 style="color:#e76f51; margin-bottom:20px;">🛒 Оформить услугу</h3>
-                <label>Ваш ник на сервере</label>
-                <input type="text" id="nickname" placeholder="Введите ник..." required>
-
-                <label>Выберите сервер</label>
-                <select id="server-select">
-                    <option value="Бомжбург">Бомжбург</option>
-                </select>
-
-                <label>Выберите привилегию</label>
-                <select id="privilege-select">
-                    <option value="Стандарт">Стандарт</option>
-                    <option value="Престиж">Престиж</option>
-                    <option value="Платинум">Платинум</option>
-                    <option value="Элита">Элита</option>
-                    <option value="Делюкс">Делюкс</option>
-                    <option value="Ультимейт">Ультимейт</option>
-                    <option value="Магнат">Магнат</option>
-                    <option value="Империал">Империал</option>
-                    <option value="Спонсор">Спонсор</option>
-                    <option value="Кастом">Кастом</option>
-                </select>
-
-                <button class="paypal-btn" onclick="paypalDonate()">💳 Оплатить</button>
-                <p style="margin-top:10px; opacity:0.5; font-size:0.9rem;">После оплаты привилегия будет выдана автоматически</p>
-            </div>
-        </div>
-    </div>
-    -->
 
     <div id="page-rules" class="page">
         <div class="card">
@@ -610,23 +559,7 @@
             setTimeout(() => btn.textContent = '📋 Скопировать IP', 2500);
         }).catch(() => alert('Скопируй вручную: ' + ip));
     }
-
-    /*
-    function paypalDonate() {
-        const nick = document.getElementById('nickname').value.trim();
-        const server = document.getElementById('server-select').value;
-        const priv = document.getElementById('privilege-select').value;
-
-        if (!nick) {
-            alert('Пожалуйста, укажите ваш ник.');
-            return;
-        }
-
-        alert(`Вы выбрали:\nНик: ${nick}\nСервер: ${server}\nПривилегия: ${priv}\n\nСейчас вы будете перенаправлены на PayPal для оплаты.`);
-        // Здесь можно вставить реальный редирект на PayPal
-    }
-    */
-
+    
     async function fetchServerStatus() {
         const realIp = '37.230.228.60';
         const port = 25667;

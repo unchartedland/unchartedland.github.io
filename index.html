@@ -217,6 +217,17 @@
             transform: scale(1.03);
         }
 
+        .version-tag {
+            display: inline-block;
+            background: #e76f51;
+            color: #0b0b1a;
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            text-align: center;
+            word-break: break-word;
+        }
+
         .donate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -352,6 +363,7 @@
             font-size: 0.9rem;
             border-top: 1px solid #2a2a4a;
             margin-top: 30px;
+            word-break: break-word;
         }
 
         @media (max-width: 700px) {
@@ -364,6 +376,8 @@
         @media (max-width: 480px) {
             .donate-grid { grid-template-columns: 1fr; }
             .header-stats { flex-wrap: wrap; gap: 8px; }
+            .version-tag { font-size: 0.8rem; padding: 8px 15px; }
+            .footer { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -405,7 +419,7 @@
             <button class="copy-btn" onclick="copyIP()">📋 Скопировать IP</button>
         </div>
         <div style="text-align: center; margin: 10px 0 30px;">
-            <span style="background: #e76f51; color: #0b0b1a; padding: 10px 25px; border-radius: 40px; font-weight: bold;">▶ Версия 1.20.1 · OptiFine / CIT Resewn</span>
+            <span class="version-tag">▶ Версия 1.20.1 · OptiFine / CIT Resewn</span>
         </div>
     </div>
 
@@ -516,6 +530,7 @@
                 <a href="https://t.me/BomjBurg" target="_blank">📱 Telegram</a>
                 <a href="https://vk.ru/bomjburg" target="_blank">📘 ВКонтакте</a>
                 <a href="https://discord.gg/QN9r2cRBRh" target="_blank">💬 Discord</a>
+                <a href="https://youtube.com/@apabydu_dabyday?si=UxbkZzY-7sBV25Tn" target="_blank">▶ YouTube</a>
                 <a href="https://www.tiktok.com/@bomjburg3?_r=1&_t=ZP-98lsf1DbNfC" target="_blank">🎬 TikTok</a>
             </div>
             <br>
